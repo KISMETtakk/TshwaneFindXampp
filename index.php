@@ -97,7 +97,7 @@ foreach($results as $result)
 				<a href="#"><i class="glyphicon glyphicon-list-alt" style="font-size: 50px;"></i></a>
 			</div>
 			<div class="rou-rgt wow fadeInDown animated" data-wow-delay=".5s">
-				<h3>80000</h3>
+				<h3>4</h3>
 				<p>Enquiries</p>
 			</div>
 				<div class="clearfix"></div>
@@ -107,7 +107,7 @@ foreach($results as $result)
 				<a href="#"><i class="fa fa-user"></i></a>
 			</div>
 			<div class="rou-rgt">
-				<h3>1900</h3>
+				<h3>8</h3>
 				<p>Registered users</p>
 			</div>
 				<div class="clearfix"></div>
@@ -117,7 +117,7 @@ foreach($results as $result)
 				<a href="#"><i class="fa fa-ticket"></i></a>
 			</div>
 			<div class="rou-rgt">
-				<h3>7,00,00,000+</h3>
+				<h3>7</h3>
 				<p>Booking</p>
 			</div>
 				<div class="clearfix"></div>
