@@ -24,9 +24,9 @@
 				<li class="hm"><a href="admin/index.php">Admin Login</a></li>
 		</ul>
 		<ul class="tp-hd-rgt wow fadeInRight animated" data-wow-delay=".5s"> 
-			<li class="tol">Toll Number : 123-4568790</li>				
+			<li class="tol">Toll Number : (012) 358 9999</li>				
 			<li class="sig"><a href="#" data-toggle="modal" data-target="#myModal" >Sign Up</a></li> 
-			<li class="sigi"><a href="#" data-toggle="modal" data-target="#myModal4" >/ Sign In</a></li>
+			<li class="sigi"><a href="#" data-toggle="modal" data-target="#myModal4" ><span>/ Sign In</span></a></li>
         </ul>
 		<div class="clearfix"></div>
 	</div>

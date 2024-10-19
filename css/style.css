@@ -37,7 +37,7 @@ label{
 }
 /*-- top-header --*/
 .logo a {
-    color: #3F84B1;
+    color: #ffe715;
     letter-spacing: 1px;
     font-size: 2em;
     font-weight: 400;
@@ -52,7 +52,7 @@ i.fa.fa-home {
     font-size: 24px;
 }
 .top-header {
-    background-color: #3F84B1;
+    background-color: #ffffff;
     border-bottom: 0 none;
 	height: 36px;
     line-height: 35px;
@@ -69,8 +69,15 @@ li.hm,li.prnt {
 ul.tp-hd-lft a {
     font-size: 13px;
     font-weight: 600;
-	color:#fff;
+	color:#000000;
 }
+
+ul.tp-hd-lft a:hover
+{
+    font-size: 14px;
+    transition: 0.5s;
+} 
+
 ul.tp-hd-rgt{
     float:right;
 }
@@ -78,13 +85,34 @@ ul.tp-hd-rgt li {
     display: inline-block;
 	font-size: 13px;
     font-weight: 600;
-	color:#fff;
+	color:#000000;
 }
+
+
 ul.tp-hd-rgt  a {
     font-size: 13px;
     font-weight: 600;
-	color:#fff;
+	color:#ffe715;
 }
+
+ul.tp-hd-rgt  span {
+    font-size: 13px;
+    font-weight: 600;
+	color:#34ad00;
+}
+
+ul.tp-hd-rgt  span:hover
+{
+    font-size: 15px;
+    transition: 0.5s;
+}
+
+ul.tp-hd-rgt  a:hover
+{
+    font-size: 15px;
+    transition: 0.5s;
+} 
+
 li.ned,li.wrt,li.tol{
     margin-right: 12px;
 }
@@ -118,7 +146,7 @@ li.ned,li.wrt,li.tol{
     margin-top: 7px;
 }
 .securetxt {
-    color: #1f8dd6;
+    color: #34ad00;
     line-height: 18px;
     margin-top: 0px;
 	font-size: 14px;
@@ -128,7 +156,7 @@ li.ned,li.wrt,li.tol{
     display: inline-block;
 }
 i.fa.fa-lock {
-    color:#1f8dd6;
+    color:#34ad00;
     font-size: 2em;
     padding-right: 10px;
 }

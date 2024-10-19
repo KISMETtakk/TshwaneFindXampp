@@ -74,6 +74,7 @@ foreach($results as $result)
 				<div class="col-md-3 room-right wow fadeInRight animated" data-wow-delay=".5s">
 					<h5>R <?php echo htmlentities($result->PackagePrice);?></h5>
 					<a href="package-details.php?pkgid=<?php echo htmlentities($result->PackageId);?>" class="view">Details</a>
+					<a href="package-details.php?pkgid=<?php echo htmlentities($result->PackageId);?>" class="view">Virtual Tour</a>
 				</div>
 				<div class="clearfix"></div>
 			</div>
@@ -93,7 +94,7 @@ foreach($results as $result)
 	<div class="container">
 		<div class="col-md-4 routes-left wow fadeInRight animated" data-wow-delay=".5s">
 			<div class="rou-left">
-				<a href="#"><i class="glyphicon glyphicon-list-alt"></i></a>
+				<a href="#"><i class="glyphicon glyphicon-list-alt" style="font-size: 50px;"></i></a>
 			</div>
 			<div class="rou-rgt wow fadeInDown animated" data-wow-delay=".5s">
 				<h3>80000</h3>
