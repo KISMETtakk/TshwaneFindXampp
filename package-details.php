@@ -130,13 +130,190 @@ foreach($results as $result)
 						<div class="clearfix"></div>
 				<div class="grand">
 					<p>Grand Total</p>
-					<h3>R80.0</h3>
+					<h3>R80.00</h3>
 				</div>
 			</div>
-		<h3>Attraction Details</h3>
-				<p style="padding-top: 1%"><?php echo htmlentities($result->PackageDetails);?> </p>	
-				<div class="clearfix"></div>
-		</div>
+	<h3>Attraction Detail</h3>
+<p style="padding-top: 1%"><?php echo htmlentities($result->PackageDetails);?> </p>
+<div class="clearfix"></div>
+
+<!-- Payment Section -->
+<div style="text-align: center; margin-top: 30px; max-width: 400px; margin-left: auto; margin-right: auto; padding: 20px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); border-radius: 10px;">
+  <h4>Select Payment Method</h4>
+  
+  <!-- Payment method buttons -->
+  <div style="margin-top: 20px;">
+    <!-- Google Pay Button -->
+    <div id="googlePayButton" style="display: none;"></div>
+    
+    <!-- Apple Pay Button -->
+    <button id="applePayButton" style="display: none; padding: 10px 20px; border-radius: 5px; background-color: black; color: white; border: none; margin-bottom: 20px;">
+      <i class="fa fa-apple" style="margin-right: 10px;"></i> Pay with Apple Pay
+    </button>
+    
+    <!-- Manual Card Entry -->
+    <button id="manualCardButton" style="padding: 10px 20px; border-radius: 5px; background-color: #4285F4; color: white; border: none; cursor: pointer;">
+      <i class="fa fa-credit-card" style="margin-right: 10px;"></i> Pay with Card
+    </button>
+  </div>
+
+  <!-- Card Details Form -->
+  <div id="cardDetailsForm" style="display: none; margin-top: 20px;">
+    <h5>Enter Card Details</h5>
+    <form id="cardForm">
+      <div style="margin-bottom: 10px;">
+        <input type="text" id="cardNumber" placeholder="Card Number" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+      </div>
+      <div style="margin-bottom: 10px;">
+        <input type="text" id="cardExpiry" placeholder="Expiry Date (MM/YY)" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+      </div>
+      <div style="margin-bottom: 10px;">
+        <input type="text" id="cardCVV" placeholder="CVV" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+      </div>
+      <div style="margin-bottom: 10px;">
+        <input type="text" id="cardName" placeholder="Cardholder Name" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+      </div>
+      <button type="submit" style="padding: 10px 20px; border-radius: 5px; background-color: #28a745; color: white; border: none; cursor: pointer;">Submit Payment</button>
+    </form>
+  </div>
+</div>
+
+<script async
+  src="https://pay.google.com/gp/p/js/pay.js"
+  onload="onGooglePayLoaded()"></script>
+
+<script>
+// Load Google Pay button
+function onGooglePayLoaded() {
+  const paymentsClient = new google.payments.api.PaymentsClient({environment: 'TEST'});
+  const button = paymentsClient.createButton({
+    onClick: onGooglePayButtonClicked
+  });
+  document.getElementById('googlePayButton').appendChild(button);
+  document.getElementById('googlePayButton').style.display = 'block'; // Show Google Pay button
+  
+  // Show Apple Pay button if available
+  if (window.ApplePaySession && ApplePaySession.canMakePayments()) {
+    document.getElementById('applePayButton').style.display = 'block';
+    document.getElementById('applePayButton').addEventListener('click', onApplePayButtonClicked);
+  }
+}
+
+// Handle manual card payment button click
+document.getElementById('manualCardButton').addEventListener('click', function() {
+  document.getElementById('cardDetailsForm').style.display = 'block'; // Show card form
+});
+
+// Handle Google Pay button click
+function onGooglePayButtonClicked() {
+  const paymentDataRequest = {
+    apiVersion: 2,
+    apiVersionMinor: 0,
+    allowedPaymentMethods: [{
+      type: 'CARD',
+      parameters: {
+        allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
+        allowedCardNetworks: ['MASTERCARD', 'VISA']
+      },
+      tokenizationSpecification: {
+        type: 'PAYMENT_GATEWAY',
+        parameters: {
+          gateway: 'example',
+          gatewayMerchantId: 'exampleMerchantId'
+        }
+      }
+    }],
+    merchantInfo: {
+      merchantId: '01234567890123456789',
+      merchantName: 'Demo Merchant'
+    },
+    transactionInfo: {
+      totalPriceStatus: 'FINAL',
+      totalPrice: '80.00',  // Adjust this to the actual amount
+      currencyCode: 'ZAR',   // Changed to South African Rand
+      countryCode: 'ZA'      // Changed to South Africa
+    }
+  };
+
+  const paymentsClient = new google.payments.api.PaymentsClient({environment: 'TEST'});
+  paymentsClient.loadPaymentData(paymentDataRequest).then(function(paymentData) {
+    // Handle payment success
+    console.log('Payment successful', paymentData);
+  }).catch(function(err) {
+    // Handle payment failure
+    console.error('Payment failed', err);
+  });
+}
+
+// Handle Apple Pay button click
+function onApplePayButtonClicked() {
+  const request = {
+    countryCode: 'ZA',
+    currencyCode: 'ZAR',
+    total: {
+      label: 'Demo Merchant',
+      amount: '80.00'  // Adjust this to the actual amount
+    },
+    supportedNetworks: ['visa', 'mastercard', 'amex'],
+    merchantCapabilities: ['capability3DS', 'capabilityDebit', 'capabilityCredit']
+  };
+
+  const session = new ApplePaySession(1, request);
+  
+  session.onvalidatemerchant = (event) => {
+    // Validate the merchant with your server
+    const promise = performValidation(event.validationURL);
+    promise.then((merchantSession) => {
+      session.completeMerchantValidation(merchantSession);
+    }).catch((error) => {
+      console.error('Merchant validation failed', error);
+      session.abort();
+    });
+  };
+
+  session.onpaymentauthorized = (event) => {
+    // Process the payment
+    const payment = event.payment;
+    console.log('Apple Pay Payment Data', payment);
+    session.completePayment(ApplePaySession.STATUS_SUCCESS);
+  };
+
+  session.begin();
+}
+
+// Dummy function for merchant validation
+function performValidation(validationURL) {
+  return new Promise((resolve, reject) => {
+    // Simulate server-side validation
+    setTimeout(() => {
+      resolve({merchantSessionIdentifier: 'merchantIdentifier'});
+    }, 1000);
+  });
+}
+
+// Handle form submission
+document.getElementById('cardForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const cardNumber = document.getElementById('cardNumber').value;
+  const cardExpiry = document.getElementById('cardExpiry').value;
+  const cardCVV = document.getElementById('cardCVV').value;
+  const cardName = document.getElementById('cardName').value;
+
+  // Simulate form processing (replace with your backend logic)
+  console.log('Card Payment Details:', {
+    cardNumber,
+    cardExpiry,
+    cardCVV,
+    cardName
+  });
+
+  alert('Payment submitted successfully!');
+});
+</script>
+
+<!-- Add Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+<div class="clearfix"></div>
 		<div class="selectroom_top">
 			<h2>Travels</h2>
 			<div class="selectroom-info animated wow fadeInUp animated" data-wow-duration="1200ms" data-wow-delay="500ms" style="visibility: visible; animation-duration: 1200ms; animation-delay: 500ms; animation-name: fadeInUp; margin-top: -70px">
