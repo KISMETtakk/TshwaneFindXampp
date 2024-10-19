@@ -41,7 +41,7 @@ include('includes/config.php');
 	<div class="container">
 		
 		<div class="room-bottom">
-			<h3>Package List</h3>
+			<h3>Facility Package List</h3>
 
 					
 <?php $sql = "SELECT * from tbltourpackages";
