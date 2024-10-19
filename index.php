@@ -49,7 +49,7 @@ include('includes/config.php');
 
 
 	
-	<h3>Package List</h3>
+	<h3>Attractions</h3>
 
 					
 <?php $sql = "SELECT * from tbltourpackages order by rand() limit 4";
