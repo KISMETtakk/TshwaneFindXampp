@@ -1,3 +1,3 @@
 <div class="copyrights">
-	 <p>TMS. All Rights Reserved |  <a href="#">TMS</a> </p>
+	 <p>© 2024 City of Tshwane. All rights reserved. </p>
 </div>	

@@ -38,14 +38,75 @@
 	<div class="container">
 		<div class="logo wow fadeInDown animated" data-wow-delay=".5s">
 			<a href="index.php">Tshwane <span>Find</span></a>	
-		</div>
-	
-		<div class="lock fadeInDown animated" data-wow-delay=".5s"> 
+			<div class="lock fadeInDown animated" data-wow-delay=".5s"> 
 			<li><i class="fa fa-lock"></i></li>
             <li><div class="securetxt">SAFE &amp; SECURE </div></li>
 			<div class="clearfix"></div>
 		</div>
-		<div class="clearfix"></div>
+		</div>
+
+		
+		<div class="lock fadeInDown animated" data-wow-delay=".5s"> 
+    
+
+    
+    <!-- Dropdown for Multilingual Languages -->
+    <li>
+        <label for="language-select">Language:</label>
+        <select id="language-select">
+		<option value="en">English</option>
+            <option value="af">Afrikaans</option>
+            <option value="zu">Zulu</option>
+            <option value="xh">Xhosa</option>
+            <option value="st">Sotho</option>
+            <option value="ts">Tswana</option>
+            <option value="ve">Venda</option>
+            <option value="tn">Setswana</option>
+            <option value="pt">Portuguese</option>
+            <option value="fr">French</option>
+            <option value="de">German</option>
+            <option value="es">Spanish</option>
+            <option value="it">Italian</option>
+        </select>
+    </li>
+
+    <!-- Speaker Icon -->
+    <li>
+        <i class="fa fa-volume-up" id="speaker-icon" onclick="showLanguageSquares()" style="cursor: pointer; font-size: 40px;"></i>
+    </li>
+    
+    <div class="clearfix"></div>
+	
+</div>
+
+<!-- Hidden Language Squares that appear when speaker is clicked -->
+<div id="language-squares" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 9999;">
+    <div style="width: 100px; height: 100px; background-color: #f0f0f0; border: 1px solid #ccc; display: inline-block; text-align: center; line-height: 100px;">
+        English
+    </div>
+    <div style="width: 100px; height: 100px; background-color: #f0f0f0; border: 1px solid #ccc; display: inline-block; text-align: center; line-height: 100px;">
+        seTswana
+    </div>
+    <div style="width: 100px; height: 100px; background-color: #f0f0f0; border: 1px solid #ccc; display: inline-block; text-align: center; line-height: 100px;">
+        isiZulu
+    </div>
+    <div style="width: 100px; height: 100px; background-color: #f0f0f0; border: 1px solid #ccc; display: inline-block; text-align: center; line-height: 100px;">
+        Afrikaans
+    </div>
+
+</div>
+
+<script>
+    function showLanguageSquares() {
+        const squares = document.getElementById('language-squares');
+        squares.style.display = squares.style.display === 'none' ? 'block' : 'none';
+    }
+</script>
+
+	
+    <div class="clearfix"></div>
+</div>
+
 	</div>
 </div>
 <!--- /header ---->
@@ -69,7 +130,7 @@
 						<ul class="nav navbar-nav">
 							<li><a href="index.php">Home</a></li>
 							<li><a href="page.php?type=aboutus">About</a></li>
-								<li><a href="package-list.php">Tour Packages</a></li>
+								<li><a href="package-list.php">Tour Attractions</a></li>
 								<li><a href="page.php?type=privacy">Privacy Policy</a></li>
 								<li><a href="page.php?type=terms">Terms of Use</a></li>
 								<li><a href="page.php?type=contact">Contact Us</a></li>
