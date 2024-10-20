@@ -79,7 +79,7 @@ $msg="Profile Updated Successfully";
 <!--- privacy ---->
 <div class="privacy">
 	<div class="container">
-		<h3 class="wow fadeInDown animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInDown;">My Profile!!</h3>
+		<h3 class="wow fadeInDown animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInDown;">My Profile</h3>
 		<form name="chngpwd" method="post">
 		 <?php if($error){?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php } 
 				else if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php }?>
@@ -123,7 +123,7 @@ foreach($results as $result)
 <?php }} ?>
 
 			<p style="width: 350px;">
-<button type="submit" name="submit6" class="btn-primary btn">Updtae</button>
+<button type="submit" name="submit6" class="btn-primary btn">Update Information</button>
 			</p>
 			</form>
 

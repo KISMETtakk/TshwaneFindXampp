@@ -36,11 +36,11 @@ echo "<script type='text/javascript'> document.location = 'package-list.php'; </
 									<div class="login-right">
 										<form method="post">
 											<h3>Signin with your account </h3>
-	<input type="text" name="email" id="email" placeholder="Enter your Email"  required="">	
-	<input type="password" name="password" id="password" placeholder="Password" value="" required="">	
+	<input type="text" name="email" id="email" placeholder="Enter your Email" style="color:black" required="">	
+	<input type="password" name="password" id="password" placeholder="Password" value="" style="color:black" required="">	
 											<h4><a href="forgot-password.php">Forgot password</a></h4>
 											
-											<input type="submit" name="signin" value="SIGNIN">
+											<input type="submit" name="signin" value="SIGN IN">
 										</form>
 									</div>
 									<div class="clearfix"></div>								

@@ -326,7 +326,7 @@ document.getElementById('cardForm').addEventListener('submit', function(e) {
 					<?php if($_SESSION['login'])
 					{?>
 						<li class="spe" align="center">
-					<button type="submit" name="submit2" class="btn-primary btn">Book</button>
+					<button type="submit" name="submit2" class="btn-primary btn">Comment</button>
 						</li>
 						<?php } else {?>
 							<li class="sigi" align="center" style="margin-top: 1%">
