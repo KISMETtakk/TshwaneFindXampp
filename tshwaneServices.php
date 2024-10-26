@@ -54,11 +54,11 @@ include('includes/config.php');
 					<h6>Service Type : Public Transport</h6>					
 					<p><b>Features:</b> Access bus schedules, real-time tracking, ticket purchasing, and route planning</p>
 
-                    <h6>Membership Options:</h6>
+					<h2 style="margin-top: 40px; margin-bottom: 20px;">Membership Options:</h6>
 					<ul>
-						<li><b>Basic Plan:</b> R200/month – Access to schedules and pay-as-you-go tickets</li>
-						<li><b>Silver Plan:</b> R350/month – Unlimited rides on all routes and real-time bus tracking</li>
-						<li><b>Gold Plan:</b> R500/month – All Silver features plus priority boarding and reserved seating</li>
+						<li style="margin-bottom: 20px;"><b>Basic Plan:</b> R200/month  – Access to schedules and pay-as-you-go tickets <br><b>(200 Tshwane Points)</b></li>
+						<li style="margin-bottom: 20px;"><b>Silver Plan:</b> R350/month – Unlimited rides on all routes and real-time bus tracking <br><b>(350 Tshwane Points)</b></li>
+						<li style="margin-bottom: 20px;"><b>Gold Plan:</b> R500/month – All Silver features plus priority boarding and reserved seating <br><b>(500 Tshwane Points)</b></li>
 					</ul>
 
 
@@ -81,11 +81,11 @@ include('includes/config.php');
 					<h4>Service: Electricity</h4>
 					<h6>Service Type: Utility</h6>
 					<p><b>Features:</b> Electricity usage monitoring, bill payments, power outage reporting, and energy-saving tips.</p>
-					<h6>Membership Options:</h6>
+					<h2 style="margin-top: 40px; margin-bottom: 20px;">Membership Options:</h6>
 					<ul>
-						<li><b>Basic Plan:</b> Free – Bill payments and outage reporting</li>
-						<li><b>Silver Plan:</b> R150/month – Real-time usage tracking and monthly consumption reports</li>
-						<li><b>Gold Plan:</b> R250/month – All Silver features, priority outage restoration, and energy-saving devices</li>
+						<li style="margin-bottom: 20px;"><b>Basic Plan:</b> Free – Bill payments and outage reporting </li>
+						<li style="margin-bottom: 20px;"><b>Silver Plan:</b> R150/month – Real-time usage tracking and monthly consumption reports <br><b>(150 Tshwane Points)</b></li>
+						<li style="margin-bottom: 20px;"><b>Gold Plan:</b> R250/month – All Silver features, priority outage restoration, and energy-saving devices <br><b>(250 Tshwane Points)</b></li>
 					</ul>
 				</div>
 
@@ -106,11 +106,11 @@ include('includes/config.php');
 					<h4>Service: Water and Sanitation</h4>
 					<h6>Service Type: Utility</h6>
 					<p><b>Features:</b> Water usage tracking, bill payment, leak detection, and water quality monitoring.</p>
-					<h6>Membership Options:</h6>
+					<h2 style="margin-top: 40px; margin-bottom: 20px;">Membership Options:</h6>
 					<ul>
-						<li><b>Basic Plan:</b> Free – Water usage tracking and online payments</li>
-						<li><b>Silver Plan:</b> R100/month – Leak detection and monthly consumption reports</li>
-						<li><b>Gold Plan:</b> R200/month – All Silver features plus priority customer support and emergency water services</li>
+						<li style="margin-bottom: 20px;"><b>Basic Plan:</b> Free – Water usage tracking and online payments</li>
+						<li style="margin-bottom: 20px;"><b>Silver Plan:</b> R100/month – Leak detection and monthly consumption reports <br><b>(100 Tshwane Points)</b></li>
+						<li style="margin-bottom: 20px;"><b>Gold Plan:</b> R200/month – All Silver features plus priority customer support and emergency water services<br><b>(200 Tshwane Points)</b></li>
 					</ul>
 				</div>
 				<div class="col-md-3 room-right wow fadeInRight animated" data-wow-delay=".5s">
