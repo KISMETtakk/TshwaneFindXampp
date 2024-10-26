@@ -44,6 +44,7 @@ $error="Something went wrong. Please try again";
 <link href='//fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 <link href="css/font-awesome.css" rel="stylesheet">
+
 <!-- Custom Theme files -->
 <script src="js/jquery-1.12.0.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -84,7 +85,7 @@ $error="Something went wrong. Please try again";
 <?php include('includes/header.php');?>
 <div class="banner-3">
 	<div class="container">
-		<h1 class="wow zoomIn animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: zoomIn;">Attraction Details</h1>
+		<h1 class="wow zoomIn animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: zoomIn;">Google Streetview</h1>
 	</div>
 </div>
 <!--- /banner ---->
@@ -114,71 +115,20 @@ foreach($results as $result)
 			<div class="col-md-8 selectroom_right wow fadeInRight animated" data-wow-delay=".5s">
 				<h2><?php echo htmlentities($result->PackageName);?></h2>
 				<p class="dow">#PKG-<?php echo htmlentities($result->PackageId);?></p>
-				<p><b>Package Type :</b> <?php echo htmlentities($result->PackageType);?></p>
-				<p><b>Package Location :</b> <?php echo htmlentities($result->PackageLocation);?></p>
-					<p><b>Features</b> <?php echo htmlentities($result->PackageFetures);?></p>
-					<div class="ban-bottom">
-				<div class="bnr-right">
-				<label class="inputLabel">From</label>
-				<input class="date" id="datepicker" type="text" placeholder="dd-mm-yyyy"  name="fromdate" required="">
+
+                <h3>Attraction Detail</h3>
+                <p style="padding-top: 1%"><?php echo htmlentities($result->PackageDetails);?> </p>
+                <div class="clearfix"></div>
+
 			</div>
-			<div class="bnr-right">
-				<label class="inputLabel">To</label>
-				<input class="date" id="datepicker1" type="text" placeholder="dd-mm-yyyy" name="todate" required="">
-			</div>
-			</div>
-						<div class="clearfix"></div>
-				<div class="grand">
-					<p>Grand Total</p>
-					<h3>R80.00</h3>
-				</div>
-			</div>
-	<h3>Attraction Detail</h3>
-<p style="padding-top: 1%"><?php echo htmlentities($result->PackageDetails);?> </p>
+
 <div class="clearfix"></div>
-
-<!-- Payment Section -->
-<div style="text-align: center; margin-top: 30px;margin-bottom: 30px; max-width: 400px; margin-left: auto; margin-right: auto; padding: 20px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); border-radius: 10px;">
-  <h4>Select Payment Method</h4>
-  
-  <!-- Payment method buttons -->
-  <div style="margin-top: 20px;">
-    <!-- Google Pay Button -->
-    <div id="googlePayButton" style="display: none;"></div>
-    
-    <div style="margin-top: 20px;">
-    <!-- Apple Pay Button -->
-    <button id="applePayButton" style="display: inline-block; padding: 10px 20px; border-radius: 5px; background-color: black; color: white; border: none; margin-bottom: 20px;">
-      <i class="fab fa-apple" style="margin-right: 10px;"></i> Pay with Apple Pay
-    </button>
-    </div>
-    
-    <!-- Manual Card Entry -->
-    <button id="manualCardButton" style="padding: 10px 20px; border-radius: 5px; background-color: #4285F4; color: white; border: none; cursor: pointer;">
-      <i class="fa fa-credit-card" style="margin-right: 10px;"></i> Pay with Card
-    </button>
-  </div>
-
-  <!-- Card Details Form -->
-  <div id="cardDetailsForm" style="display: none; margin-top: 20px;">
-    <h5>Enter Card Details</h5>
-    <form id="cardForm">
-      <div style="margin-bottom: 10px;">
-        <input type="text" id="cardNumber" placeholder="Card Number" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
-      </div>
-      <div style="margin-bottom: 10px;">
-        <input type="text" id="cardExpiry" placeholder="Expiry Date (MM/YY)" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
-      </div>
-      <div style="margin-bottom: 10px;">
-        <input type="text" id="cardCVV" placeholder="CVV" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
-      </div>
-      <div style="margin-bottom: 10px;">
-        <input type="text" id="cardName" placeholder="Cardholder Name" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
-      </div>
-      <button type="submit" style="padding: 10px 20px; border-radius: 5px; background-color: #28a745; color: white; border: none; cursor: pointer;">Submit Payment</button>
-    </form>
-  </div>
-</div>
+                <iframe
+                    src="<?php echo htmlentities($result->GoogleStreet); ?>"
+                    style="width: 100%; height: 550px; border: 0;  margin-top: 20px; margin-bottom: 20px;"
+                    allowfullscreen=""
+                    loading="lazy">
+                </iframe>
 
 <script async
   src="https://pay.google.com/gp/p/js/pay.js"
@@ -317,26 +267,49 @@ document.getElementById('cardForm').addEventListener('submit', function(e) {
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 <div class="clearfix"></div>
 		<div class="selectroom_top">
-			<h2>Leave Us A Comment</h2>
-			<div class="selectroom-info animated wow fadeInUp animated" data-wow-duration="1200ms" data-wow-delay="500ms" style="visibility: visible; animation-duration: 1200ms; animation-delay: 500ms; animation-name: fadeInUp; margin-top: -70px">
-				<ul>
-				
-					<li class="spe">
-						<label class="inputLabel">...</label>
-						<input class="special" type="text" name="comment" required="">
-					</li>
-					<?php if($_SESSION['login'])
-					{?>
-						<li class="spe" align="center">
-					<button type="submit" name="submit2" class="btn-primary btn">Comment</button>
-						</li>
-						<?php } else {?>
-							<li class="sigi" align="center" style="margin-top: 1%">
-							<a href="#" data-toggle="modal" data-target="#myModal4" class="btn-primary btn" > Comment</a></li>
-							<?php } ?>
-					<div class="clearfix"></div>
-				</ul>
-			</div>
+			<h2>Payment Methods</h2>
+			<!-- Payment Section -->
+<div style="text-align: center; margin-top: 30px;margin-bottom: 30px; max-width: 400px; margin-left: auto; margin-right: auto; padding: 20px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); border-radius: 10px;">
+  <h4>Select Payment Method</h4>
+  
+  <!-- Payment method buttons -->
+  <div style="margin-top: 20px;">
+    <!-- Google Pay Button -->
+    <div id="googlePayButton" style="display: none;"></div>
+    
+    <div style="margin-top: 20px;">
+    <!-- Apple Pay Button -->
+    <button id="applePayButton" style="display: inline-block; padding: 10px 20px; border-radius: 5px; background-color: black; color: white; border: none; margin-bottom: 20px;">
+      <i class="fab fa-apple" style="margin-right: 10px;"></i> Pay with Apple Pay
+    </button>
+    </div>
+    
+    <!-- Manual Card Entry -->
+    <button id="manualCardButton" style="padding: 10px 20px; border-radius: 5px; background-color: #4285F4; color: white; border: none; cursor: pointer;">
+      <i class="fa fa-credit-card" style="margin-right: 10px;"></i> Pay with Card
+    </button>
+  </div>
+
+  <!-- Card Details Form -->
+  <div id="cardDetailsForm" style="display: none; margin-top: 20px;">
+    <h5>Enter Card Details</h5>
+    <form id="cardForm">
+      <div style="margin-bottom: 10px;">
+        <input type="text" id="cardNumber" placeholder="Card Number" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+      </div>
+      <div style="margin-bottom: 10px;">
+        <input type="text" id="cardExpiry" placeholder="Expiry Date (MM/YY)" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+      </div>
+      <div style="margin-bottom: 10px;">
+        <input type="text" id="cardCVV" placeholder="CVV" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+      </div>
+      <div style="margin-bottom: 10px;">
+        <input type="text" id="cardName" placeholder="Cardholder Name" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+      </div>
+      <button type="submit" style="padding: 10px 20px; border-radius: 5px; background-color: #28a745; color: white; border: none; cursor: pointer;">Submit Payment</button>
+    </form>
+  </div>
+</div>
 			
 		</div>
 		</form>
