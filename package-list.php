@@ -41,7 +41,7 @@ include('includes/config.php');
 	<div class="container">
 		
 		<div class="room-bottom">
-			<h3>Package List</h3>
+			<h3>Facility Package List</h3>
 
 					
 <?php $sql = "SELECT * from tbltourpackages";
@@ -66,7 +66,9 @@ foreach($results as $result)
 				<div class="col-md-3 room-right wow fadeInRight animated" data-wow-delay=".5s">
 					<h5>R <?php echo htmlentities($result->PackagePrice);?></h5>
 					<a href="package-details.php?pkgid=<?php echo htmlentities($result->PackageId);?>" class="view">Details</a>
-					<a href="package-details.php?pkgid=<?php echo htmlentities($result->PackageId);?>" class="view">Virtual Tour</a>
+					<a href="http://localhost:5173/3D-art-gallery" class="view">Virtual Tour</a>
+					<a href="google-street.php?pkgid=<?php echo htmlentities($result->PackageId);?>" class="view">Google Streetview</a>
+					
 				</div>
 				<div class="clearfix"></div>
 			</div>

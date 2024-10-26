@@ -129,10 +129,15 @@
 					<nav class="cl-effect-1">
 						<ul class="nav navbar-nav">
 							<li><a href="index.php">Home</a></li>
+							<li><a href="tshwaneServices.php">Tshwane Services</a></li>
 							<li><a href="page.php?type=aboutus">About</a></li>
+<<<<<<< HEAD
 								<li><a href="package-list.php">Tour Attractions</a></li>
+=======
+								<!-- <li><a href="package-list.php">Tour Attractions</a></li> -->
+>>>>>>> 696eb7f663bdb3eee887bfc518d188fb68f9c813
 								<li><a href="page.php?type=privacy">Privacy Policy</a></li>
-								<li><a href="page.php?type=terms">Terms of Use</a></li>
+								<!-- <li><a href="page.php?type=terms">Terms of Use</a></li> -->
 								<li><a href="page.php?type=contact">Contact Us</a></li>
 								<?php if($_SESSION['login'])
 {?>
