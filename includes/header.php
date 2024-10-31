@@ -37,7 +37,11 @@
 <div class="header">
 	<div class="container">
 		<div class="logo wow fadeInDown animated" data-wow-delay=".5s">
-			<a href="index.php">Tshwane <span>Find</span></a>	
+		<a href="index.php" style="display: flex; align-items: center; justify-content: center; text-decoration: none;">
+    <img src="./Tshwane Find Images/TshwaneFind.jpg" alt="Tshwane Find Logo" style="height: 40px; margin-right: 8px;">
+    Tshwane <span>Find</span>
+</a>
+	
 			<div class="lock fadeInDown animated" data-wow-delay=".5s"> 
 			<li><i class="fa fa-lock"></i></li>
             <li><div class="securetxt">SAFE &amp; SECURE </div></li>
@@ -131,11 +135,7 @@
 							<li><a href="index.php">Home</a></li>
 							<li><a href="tshwaneServices.php">Tshwane Services</a></li>
 							<li><a href="page.php?type=aboutus">About</a></li>
-<<<<<<< HEAD
-								<li><a href="package-list.php">Tour Attractions</a></li>
-=======
 								<!-- <li><a href="package-list.php">Tour Attractions</a></li> -->
->>>>>>> 696eb7f663bdb3eee887bfc518d188fb68f9c813
 								<li><a href="page.php?type=privacy">Privacy Policy</a></li>
 								<!-- <li><a href="page.php?type=terms">Terms of Use</a></li> -->
 								<li><a href="page.php?type=contact">Contact Us</a></li>

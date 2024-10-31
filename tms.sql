@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 31, 2024 at 03:10 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Oct 31, 2024 at 10:35 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `tms`
 --
+CREATE DATABASE IF NOT EXISTS `tms` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `tms`;
 
 -- --------------------------------------------------------
 
@@ -30,6 +32,9 @@ SET time_zone = "+00:00";
 CREATE TABLE `admin` (
   `id` int(11) NOT NULL,
   `UserName` varchar(100) DEFAULT NULL,
+  `Name` varchar(250) DEFAULT NULL,
+  `EmailId` varchar(250) DEFAULT NULL,
+  `MobileNumber` bigint(10) DEFAULT NULL,
   `Password` varchar(100) DEFAULT NULL,
   `updationDate` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
@@ -38,8 +43,8 @@ CREATE TABLE `admin` (
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`id`, `UserName`, `Password`, `updationDate`) VALUES
-(1, 'admin', 'f925916e2754e5e03f75dd58a5733251', '2024-01-10 11:18:49');
+INSERT INTO `admin` (`id`, `UserName`, `Name`, `EmailId`, `MobileNumber`, `Password`, `updationDate`) VALUES
+(1, 'admin', 'Tshiamo', 'test@gmail.com', 813556089, 'f925916e2754e5e03f75dd58a5733251', '2024-10-18 11:18:49');
 
 -- --------------------------------------------------------
 
@@ -59,16 +64,6 @@ CREATE TABLE `tblbooking` (
   `CancelledBy` varchar(5) DEFAULT NULL,
   `UpdationDate` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Dumping data for table `tblbooking`
---
-
-INSERT INTO `tblbooking` (`BookingId`, `PackageId`, `UserEmail`, `FromDate`, `ToDate`, `Comment`, `RegDate`, `status`, `CancelledBy`, `UpdationDate`) VALUES
-(1, 1, 'test@gmail.com', '2020-07-11', '2020-07-18', 'I want this package.', '2024-01-16 06:38:36', 2, 'u', '2024-01-30 05:18:29'),
-(2, 2, 'test@gmail.com', '2020-07-10', '2020-07-13', 'There is some discount', '2024-01-17 06:43:25', 1, NULL, '2024-01-31 01:21:17'),
-(3, 4, 'abir@gmail.com', '2020-07-11', '2020-07-15', 'When I get conformation', '2024-01-17 06:44:39', 2, 'a', '2024-01-30 05:18:52'),
-(4, 2, 'test@gmail.com', '2024-02-02', '2024-02-08', 'NA', '2024-01-31 02:03:27', 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -92,9 +87,7 @@ CREATE TABLE `tblenquiry` (
 --
 
 INSERT INTO `tblenquiry` (`id`, `FullName`, `EmailId`, `MobileNumber`, `Subject`, `Description`, `PostingDate`, `Status`) VALUES
-(1, 'Jone Paaire', 'jone@gmail.com', '4646464646', 'Enquiry for Manali Trip', 'Kindly provide me more offer.', '2024-01-16 06:30:32', 1),
-(2, 'Kishan Twaerea', 'kishan@gmail.com', '6797947987', 'Enquiry', 'Any Offer for North Trip', '2024-01-18 06:31:38', NULL),
-(3, 'Jacaob', 'Jai@gmail.com', '1646689721', 'Any offer for North', 'Any Offer for north', '2024-01-19 06:32:41', 1);
+(6, 'Tshiamo Matiza', 'tmatiza19@gmail.com', '0813556089', 'I will donate R100,000', 'I would like to donate R100 000, as I see good in the website', '2024-10-20 01:12:01', 1);
 
 -- --------------------------------------------------------
 
@@ -111,14 +104,6 @@ CREATE TABLE `tblissues` (
   `AdminRemark` mediumtext DEFAULT NULL,
   `AdminremarkDate` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Dumping data for table `tblissues`
---
-
-INSERT INTO `tblissues` (`id`, `UserEmail`, `Issue`, `Description`, `PostingDate`, `AdminRemark`, `AdminremarkDate`) VALUES
-(6, 'test@gmail.com', 'Booking Issues', 'I am not able to book package', '2024-01-20 06:36:03', 'Ok, We will fix the issue asap', '2024-01-30 05:20:03'),
-(7, 'test@gmail.com', 'Refund', 'I want my refund', '2024-01-25 06:56:29', NULL, '2024-01-30 05:20:14');
 
 -- --------------------------------------------------------
 
@@ -137,10 +122,10 @@ CREATE TABLE `tblpages` (
 --
 
 INSERT INTO `tblpages` (`id`, `type`, `detail`) VALUES
-(1, 'terms', '										<p align=\"justify\"><font size=\"2\"><strong><font color=\"#990000\">(1) ACCEPTANCE OF TERMS</font><br><br></strong>Welcome to Yahoo! India. 1Yahoo Web Services India Private Limited Yahoo\", \"we\" or \"us\" as the case may be) provides the Service (defined below) to you, subject to the following Terms of Service (\"TOS\"), which may be updated by us from time to time without notice to you. You can review the most current version of the TOS at any time at: <a href=\"http://in.docs.yahoo.com/info/terms/\">http://in.docs.yahoo.com/info/terms/</a>. In addition, when using particular Yahoo services or third party services, you and Yahoo shall be subject to any posted guidelines or rules applicable to such services which may be posted from time to time. All such guidelines or rules, which maybe subject to change, are hereby incorporated by reference into the TOS. In most cases the guides and rules are specific to a particular part of the Service and will assist you in applying the TOS to that part, but to the extent of any inconsistency between the TOS and any guide or rule, the TOS will prevail. We may also offer other services from time to time that are governed by different Terms of Services, in which case the TOS do not apply to such other services if and to the extent expressly excluded by such different Terms of Services. Yahoo also may offer other services from time to time that are governed by different Terms of Services. These TOS do not apply to such other services that are governed by different Terms of Service. </font></p>\r\n<p align=\"justify\"><font size=\"2\">Welcome to Yahoo! India. Yahoo Web Services India Private Limited Yahoo\", \"we\" or \"us\" as the case may be) provides the Service (defined below) to you, subject to the following Terms of Service (\"TOS\"), which may be updated by us from time to time without notice to you. You can review the most current version of the TOS at any time at: </font><a href=\"http://in.docs.yahoo.com/info/terms/\"><font size=\"2\">http://in.docs.yahoo.com/info/terms/</font></a><font size=\"2\">. In addition, when using particular Yahoo services or third party services, you and Yahoo shall be subject to any posted guidelines or rules applicable to such services which may be posted from time to time. All such guidelines or rules, which maybe subject to change, are hereby incorporated by reference into the TOS. In most cases the guides and rules are specific to a particular part of the Service and will assist you in applying the TOS to that part, but to the extent of any inconsistency between the TOS and any guide or rule, the TOS will prevail. We may also offer other services from time to time that are governed by different Terms of Services, in which case the TOS do not apply to such other services if and to the extent expressly excluded by such different Terms of Services. Yahoo also may offer other services from time to time that are governed by different Terms of Services. These TOS do not apply to such other services that are governed by different Terms of Service. </font></p>\r\n<p align=\"justify\"><font size=\"2\">Welcome to Yahoo! India. Yahoo Web Services India Private Limited Yahoo\", \"we\" or \"us\" as the case may be) provides the Service (defined below) to you, subject to the following Terms of Service (\"TOS\"), which may be updated by us from time to time without notice to you. You can review the most current version of the TOS at any time at: </font><a href=\"http://in.docs.yahoo.com/info/terms/\"><font size=\"2\">http://in.docs.yahoo.com/info/terms/</font></a><font size=\"2\">. In addition, when using particular Yahoo services or third party services, you and Yahoo shall be subject to any posted guidelines or rules applicable to such services which may be posted from time to time. All such guidelines or rules, which maybe subject to change, are hereby incorporated by reference into the TOS. In most cases the guides and rules are specific to a particular part of the Service and will assist you in applying the TOS to that part, but to the extent of any inconsistency between the TOS and any guide or rule, the TOS will prevail. We may also offer other services from time to time that are governed by different Terms of Services, in which case the TOS do not apply to such other services if and to the extent expressly excluded by such different Terms of Services. Yahoo also may offer other services from time to time that are governed by different Terms of Services. These TOS do not apply to such other services that are governed by different Terms of Service. </font></p>\r\n										'),
-(2, 'privacy', '										<span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat</span>\r\n										'),
+(1, 'terms', '																														<p align=\"justify\"><span style=\"color: rgb(153, 0, 0); font-size: small; font-weight: 700;\">Do not use foul language</span></p>\r\n										\r\n										\r\n										'),
+(2, 'privacy', '<div style=\"text-align: justify;\"><span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px;\">Relax you are on in good hands thanks to AWS services</span></div>'),
 (3, 'aboutus', '										<div><span style=\"color: rgb(0, 0, 0); font-family: Georgia; font-size: 15px; text-align: justify; font-weight: bold;\">Welcome to Tourism Management System!!!</span></div><span style=\"font-family: &quot;courier new&quot;;\"><span style=\"color: rgb(0, 0, 0); font-size: 15px; text-align: justify;\">Since then, our courteous and committed team members have always ensured a pleasant and enjoyable tour for the clients. This arduous effort has enabled TMS to be recognized as a dependable Travel Solutions provider with three offices Delhi.</span><span style=\"color: rgb(80, 80, 80); font-size: 13px;\">&nbsp;We have got packages to suit the discerning traveler\'s budget and savor. Book your dream vacation online. Supported quality and proposals of our travel consultants, we have a tendency to welcome you to decide on from holidays packages and customize them according to your plan.</span></span>\r\n										'),
-(11, 'contact', '																				<span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">Address------J-890 Dwarka House New Delhi-110096</span>');
+(11, 'contact', '																														<span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">Code 404, Tshwane Leadership and Management Academy, 012-232-4432</span>');
 
 -- --------------------------------------------------------
 
@@ -158,23 +143,20 @@ CREATE TABLE `tbltourpackages` (
   `PackageDetails` mediumtext DEFAULT NULL,
   `PackageImage` varchar(100) DEFAULT NULL,
   `Creationdate` timestamp NULL DEFAULT current_timestamp(),
-  `UpdationDate` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
+  `UpdationDate` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
+  `GoogleStreet` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tbltourpackages`
 --
 
-INSERT INTO `tbltourpackages` (`PackageId`, `PackageName`, `PackageType`, `PackageLocation`, `PackagePrice`, `PackageFetures`, `PackageDetails`, `PackageImage`, `Creationdate`, `UpdationDate`) VALUES
-(1, 'Swiss Paris Delight Premium 2020 (Group Package)', 'Group Package', 'Paris and Switzerland', 6000, ' Round trip Economy class airfare valid for the duration of the holiday - Airport taxes - Accommodation for 3 nights in Paris and 3 nights in scenic Switzerland - Enjoy continental breakfasts every morning - Enjoy 5 Indian dinners in Mainland Europe - Exp', 'Pick this holiday for a relaxing vacation in Paris and Switzerland. Your tour embarks from Paris. Enjoy an excursion to popular attractions like the iconic Eiffel Tower. After experiencing the beautiful city, you will drive past mustard fields through Burgundy to reach Switzerland. While there, you can opt for a tour to Interlaken and then to the Trummelbach Falls. Photostop at Zurich Lake and a cable car ride to Mt. Titlis are the main highlights of the holiday.', '1581490262_2_1.jpg', '2024-07-15 05:21:58', '2024-01-30 05:20:49'),
-(2, 'Bhutan Holidays - Thimphu and Paro Special', 'Family Package', 'Bhutan', 3000, 'Free Wi-fi, Free Breakfast, Free Pickup and drop facility ', 'Visit to Tiger\'s Nest Monastery | Complimentary services of a Professional Guide', 'BHUTAN-THIMPU-PARO-PUNAKHA-TOUR-6N-7D.jpeg', '2024-07-15 05:21:58', '2024-01-30 05:20:56'),
-(3, 'Soulmate Special Bali - 7 Nights', 'Couple Package', 'Indonesia(Bali)', 5000, 'Free Pickup and drop facility, Free Wi-fi , Free professional guide', 'Airport transfers by private car | Popular Sightseeing included | Suitable for Couple and budget travelers', '1583140977_5_11.jpg', '2024-07-15 05:21:58', '2024-01-30 05:20:56'),
-(4, 'Kerala - A Lovers Paradise - Value Added', 'Family Package', 'Kerala', 1000, 'Free Wi-fi, Free pick up and drop facility,', 'Visit Matupetty Dam, tea plantation and a spice garden | View sunset in Kanyakumari | AC Car at disposal for 2hrs extra (once per city)', 'images (2).jpg', '2024-07-15 05:21:58', '2024-01-30 05:20:56'),
-(5, 'Short Trip To Dubai', 'Family', 'Dubai', 4500, 'Free pick up and drop facility, Free Wi-fi, Free breakfast', 'A Holiday Package for the entire family.', 'unnamed.jpg', '2024-07-15 05:21:58', '2024-01-30 05:20:56'),
-(6, 'Sikkim Delight with Darjeeling (customizable)', 'Group', 'Sikkim', 3500, 'Free Breakfast, Free Pick up drop facility', 'Changu Lake and New Baba Mandir excursion | View the sunrise from Tiger Hill | Get Blessed at the famous Rumtek Monastery', 'download (2).jpg', '2024-07-15 05:21:58', '2024-01-30 05:20:56'),
-(7, '6 Days in Guwahati and Shillong With Cherrapunji Excursion', 'Family Package', 'Guwahati(Sikkim)', 4500, 'Breakfast,  Accommodation » Pick-up » Drop » Sightseeing', 'After arrival at Guwahati airport meet our representative & proceed for Shillong. Shillong is the capital and hill station of Meghalaya, also known as Abode of Cloud, one of the smallest states in India. En route visit Barapani lake. By afternoon reach at Shillong. Check in to the hotel. Evening is leisure. Spent time as you want. Visit Police bazar. Overnight stay at Shillong.', '95995.jpg', '2024-07-15 05:21:58', '2024-01-30 05:20:56'),
-(8, 'Grand Week in North East - Lachung, Lachen and Gangtok', 'Domestic Packages', 'Sikkim', 4500, 'Free Breakfast, Free Wi-fi', 'Changu Lakeand New Baba Mandir excursion | Yumthang Valley tour | Gurudongmar Lake excursion | Night stay in Lachen', 'download (3).jpg', '2024-07-15 05:21:58', '2024-01-30 05:20:56'),
-(9, 'Gangtok & Darjeeling Holiday (Without Flights)', 'Family Package', 'Sikkim', 1000, 'Free Wi-fi, Free pickup and drop facility', 'Ideal tour for Family | Sightseeing in Gangtok and Darjeeling | Full day excursion to idyllic Changu Lake | Visit to Ghoom Monastery', '1540382781_shutterstock_661867435.jpg.jpg', '2024-07-15 05:21:58', '2024-01-30 05:20:56');
+INSERT INTO `tbltourpackages` (`PackageId`, `PackageName`, `PackageType`, `PackageLocation`, `PackagePrice`, `PackageFetures`, `PackageDetails`, `PackageImage`, `Creationdate`, `UpdationDate`, `GoogleStreet`) VALUES
+(1, 'Union Buildings ', 'Group Package', 'Government Ave, Pretoria, 0002', 60, 'Guided tour of the Union Buildings – Round-trip transport from your hotel – Explore terraced gardens and monuments – Capture stunning views of Pretoria – Learn about South Africa’s history – Perfect for a day of sightseeing and photography', 'The Union Buildings in Pretoria are a key symbol of South Africa\'s government and history. Completed in 1913, they house the offices of the President and feature grand architecture blending Italian Renaissance and Cape Dutch styles. Set atop Meintjieskop Hill, they offer stunning views and lush terraced gardens, including the famous statue of Nelson Mandela. A popular tourist attraction, the Union Buildings are a serene spot to explore South Africa\'s political history and enjoy beautiful surroundings.', 'Union Buildings.png', '2024-07-15 05:21:58', '2024-10-26 12:23:38', 'https://www.google.com/maps/embed?pb=!4v1729945343390!6m8!1m7!1sCAoSLEFGMVFpcFBySWh5NU9sOUp1Q0JiVVZZemtGT3VrWUhmUXg3eTJOY1dTOWR2!2m2!1d-25.74223722517642!2d28.21147175718065!3f11.879823943647864!4f4.278931331935581!5f0.7820865974627469'),
+(2, 'Lion and Safari Park', 'Family Package', 'R512 Pelindaba Rd, Broederstroom, 0240', 120, 'Guided game drives through Lion and Safari Park – See lions, cheetahs, zebras, and more – Experience up-close animal encounters – Feed giraffes and walk with lions – Enjoy family-friendly facilities, picnic spots, and a kids’ zone', 'The Lion and Safari Park, located just outside Johannesburg, South Africa, offers visitors an unforgettable wildlife experience. The park is home to a wide variety of animals, including lions, cheetahs, hyenas, giraffes, and zebras. Visitors can enjoy close-up encounters with these magnificent creatures through guided game drives or self-drives. For a more interactive experience, guests can walk with lions, feed giraffes, or take part in cheetah encounters. The park also features a fun kids\' zone, a restaurant, and picnic spots, making it a great destination for families and nature lovers. It’s the perfect blend of adventure and education, offering a safe environment to learn about African wildlife conservation.', 'Lion and Safari Park.jpg', '2024-07-15 05:21:58', '2024-10-26 12:14:02', 'https://www.google.com/maps/embed?pb=!4v1729944406087!6m8!1m7!1sCAoSLEFGMVFpcE1mSklYQ2hEQzFBZEc0cDNSZmNWTWZxaVZsMXJ3cVhjUkQwMmFS!2m2!1d-25.83356891419412!2d27.88766902750128!3f181.70869519937196!4f10.79192062256513!5f0.7820865974627469'),
+(3, 'Pretoria Art Museum', 'Couple Package, Family Package', 'Wessels St, Arcadia, Pretoria, 0007', 120, 'Guided tour of the Pretoria Art Museum – Explore collections of South African art – View works by Pierneef, Irma Stern, and more – Enjoy temporary exhibitions and contemporary pieces – Perfect for art lovers and cultural explorers', 'The Pretoria Art Museum is a cultural gem in the heart of the city, offering visitors a rich collection of South African art from the 19th century to the present. Established in 1964, the museum showcases a variety of art forms including paintings, sculptures, ceramics, and textiles. The permanent collection features renowned South African artists such as Pierneef, Irma Stern, and Gerard Sekoto, while temporary exhibitions highlight contemporary and international works. Visitors can explore diverse artistic movements and themes, making it an educational and enriching experience for art enthusiasts. Located in Arcadia, the museum is surrounded by tranquil gardens, offering a peaceful environment to appreciate both art and nature.', 'Pretoria Art Museum.jpg', '2024-07-15 05:21:58', '2024-10-26 12:15:05', 'https://www.google.com/maps/embed?pb=!4v1729944778541!6m8!1m7!1s01mYDW2kv9n0CBW2VDgPXA!2m2!1d-25.74757982040809!2d28.2139810533941!3f182.71652011480816!4f-3.228998784042318!5f0.7820865974627469'),
+(4, 'Freedom Park Heritage Site & Museum', 'Family Package', 'koch st &, 7th Ave, Salvokop, Pretoria, 0002', 90, 'Guided tour of Freedom Park – Round-trip transport from your hotel – Explore the Wall of Names and Eternal Flame – Discover South Africa’s rich heritage through museum exhibits – Enjoy panoramic city views and serene gardens – Ideal for history and cultur', 'Freedom Park Heritage Site & Museum in Pretoria is a profound cultural and historical destination that commemorates South Africa\'s struggle for freedom. Built on Salvokop Hill, it offers stunning views of the capital city. The park is a symbol of remembrance and reconciliation, honoring the country’s heroes and telling the story of its diverse heritage.\r\n\r\nKey attractions include the Wall of Names, inscribed with the names of those who sacrificed their lives in South Africa\'s liberation, and the Eternal Flame, representing the undying spirit of the nation’s heroes. The museum\'s exhibits highlight South Africa’s rich history, from pre-colonial times through to democracy. Visitors can explore peaceful gardens, water features, and sacred spaces designed for reflection, making it both an educational and deeply moving experience.', 'Freedom Park Heritage Site & Museum.png', '2024-07-15 05:21:58', '2024-10-26 12:19:44', 'https://www.google.com/maps/embed?pb=!4v1729945116731!6m8!1m7!1stMVh18MKLXaEQy1NZxoACA!2m2!1d-25.7643852809252!2d28.18649496480831!3f153.1292337118859!4f-3.176106867357518!5f0.7820865974627469'),
+(5, 'Acrobranch Pretoria North', 'Family', 'Freedom Acrobranch Pretoria North', 250, 'Exciting treetop obstacle courses at Freedom Acrobranch – Multiple difficulty levels – Zip lines, high ropes, and Ebalance beams – Expert guidance for all ages – Perfect for families, thrill-seekers, and team-building – Set in beautiful Pretoria North', 'Freedom Acrobranch Pretoria North is an exciting outdoor adventure park offering treetop experiences designed for all ages. Set in the beautiful natural surroundings of Pretoria North, it features a variety of aerial obstacle courses that include zip lines, balance beams, and high ropes. These courses are categorized by difficulty, making it ideal for families, thrill-seekers, and team-building groups. Whether you’re a beginner or a seasoned adventurer, Freedom Acrobranch offers a safe and fun environment to test your limits while enjoying the beauty of nature. Expert instructors guide you throughout, ensuring both safety and an unforgettable experience. It’s perfect for adventure lovers looking for a fun day outdoors with activities that challenge both mind and body.', 'Acrobranch Pretoria North.jpg', '2024-07-15 05:21:58', '2024-10-26 12:27:49', 'https://www.google.com/maps/embed?pb=!4v1729945617370!6m8!1m7!1sCAoSLEFGMVFpcE1tZExoTjlKSHM0c2hMRzFiY1ZKTlFYdXhkYm5VS3E5UlFKRWNv!2m2!1d-25.57960916828755!2d28.19366583375794!3f58.956461835634954!4f-5.883519366951774!5f0.7820865974627469');
 
 -- --------------------------------------------------------
 
@@ -197,11 +179,9 @@ CREATE TABLE `tblusers` (
 --
 
 INSERT INTO `tblusers` (`id`, `FullName`, `MobileNumber`, `EmailId`, `Password`, `RegDate`, `UpdationDate`) VALUES
-(1, 'Manju Srivatav', '4456464654', 'manju@gmail.com', '202cb962ac59075b964b07152d234b70', '2024-01-16 06:33:20', '2024-01-31 02:00:40'),
-(2, 'Kishan', '9871987979', 'kishan@gmail.com', '202cb962ac59075b964b07152d234b70', '2024-01-16 06:33:20', '2024-01-31 02:00:48'),
-(3, 'Salvi Chandra', '1398756416', 'salvi@gmail.com', '202cb962ac59075b964b07152d234b70', '2024-01-16 06:33:20', '2024-01-31 02:00:48'),
-(4, 'Abir', '4789756456', 'abir@gmail.com', '202cb962ac59075b964b07152d234b70', '2024-01-16 06:33:20', '2024-01-31 02:00:48'),
-(5, 'Test', '1987894654', 'test@gmail.com', 'f925916e2754e5e03f75dd58a5733251', '2024-01-16 06:33:20', '2024-01-31 02:00:48');
+(5, 'Test', '1987894654', 'test@gmail.com', 'f925916e2754e5e03f75dd58a5733251', '2024-10-18 06:33:20', '2024-10-20 00:36:45'),
+(12, 'Tshiamo Matiza', '0813556089', 'tshiamo@gmail.com', '202cb962ac59075b964b07152d234b70', '2024-10-18 19:49:04', NULL),
+(13, 'Zenzo Matiza', '0813556089', 'vgp19@gmail.com', '202cb962ac59075b964b07152d234b70', '2024-10-20 00:31:35', NULL);
 
 --
 -- Indexes for dumped tables
@@ -265,19 +245,19 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `tblbooking`
 --
 ALTER TABLE `tblbooking`
-  MODIFY `BookingId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `BookingId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tblenquiry`
 --
 ALTER TABLE `tblenquiry`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tblissues`
 --
 ALTER TABLE `tblissues`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `tblpages`
@@ -295,7 +275,7 @@ ALTER TABLE `tbltourpackages`
 -- AUTO_INCREMENT for table `tblusers`
 --
 ALTER TABLE `tblusers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

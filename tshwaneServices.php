@@ -91,7 +91,7 @@ include('includes/config.php');
 
                 <div class="col-md-3 room-right wow fadeInRight animated" data-wow-delay=".5s">
 					
-					<a href="subscribe.php?serviceid=3" class="view">Details</a>
+					<a href="#" class="view">Details</a>
 				</div>
 
 				<div class="clearfix"></div>
@@ -115,7 +115,7 @@ include('includes/config.php');
 				</div>
 				<div class="col-md-3 room-right wow fadeInRight animated" data-wow-delay=".5s">
 					
-					<a href="subscribe.php?serviceid=3" class="view">Details</a>
+					<a href="#" class="view">Details</a>
 				</div>
 				<div class="clearfix"></div>
 			</div>
